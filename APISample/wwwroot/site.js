@@ -23,7 +23,7 @@ function getData() {
         url: uri,
         cache: false,
         success: function (data) {
-            const tBody = $("#products");
+            const tBody = $("#Products");
 
             $(tBody).empty();
 
@@ -31,9 +31,21 @@ function getData() {
 
             $.each(data, function (key, item) {
                 const tr = $("<tr></tr>")
-                    .append($("<td></td>").text(item.name))
-                    .append($("<td></td>").text(item.category))
-                    .append($("<td></td>").text(item.price))
+                    .append(
+                        $("<td></td>").append(
+                            item.name
+                        )
+                    )
+                    .append(
+                        $("<td></td>").append(
+                            item.category
+                        )
+                    )
+                    .append(
+                        $("<td></td>").append(
+                            item.price
+                        )
+                    )
                     .append(
                         $("<td></td>").append(
                             $("<button>Edit</button>").on("click", function () {
@@ -107,8 +119,8 @@ function editItem(id) {
 $(".my-form").on("submit", function () {
     const item = {
         name: $("#edit-name").val(),
-        name: $("#edit-category").val(),
-        name: $("#edit-price").val(),
+        category: $("#edit-category").val(),
+        price: $("#edit-price").val(),
         id: $("#edit-id").val()
     };
 
